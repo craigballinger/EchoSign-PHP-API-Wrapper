@@ -97,6 +97,82 @@
             
         }
         
+        /*
+         * 
+         * Retrieves the current status of a document
+         * @param string $document_key The EchoSign library DocumentKey
+         * 
+         */
+        function getDocumentInfo($document_key){
+            
+            $package = array(
+                             'apiKey' => $this->api_key,
+                             'documentKey' => $document_key
+                            );
+            
+            $result = $this->client->getDocumentInfo($package);
+            
+            return $result;
+            
+        }
+        
+        /*
+         * 
+         * Retrieves the current version of a document as raw file contents
+         * @param string $document_key The EchoSign library DocumentKey
+         * 
+         */
+        function getLatestDocument($document_key){
+            
+            $package = array(
+                             'apiKey' => $this->api_key,
+                             'documentKey' => $document_key
+                            );
+            
+            $result = $this->client->getLatestDocument($package);
+            
+            return $result;
+            
+        }
+        
+        /*
+         * 
+         * Retrieves a url to access the current version of a document
+         * @param string $document_key The EchoSign library DocumentKey
+         * 
+         */
+        function getLatestDocumentUrl($document_key){
+            
+            $package = array(
+                             'apiKey' => $this->api_key,
+                             'documentKey' => $document_key
+                            );
+            
+            $result = $this->client->getLatestDocumentUrl($package);
+            
+            return $result;
+            
+        }
+        
+        /*
+         * 
+         * Retrieves a list of images based on the current document version
+         * @param string $document_key The EchoSign library DocumentKey
+         * 
+         */
+        function getLatestImages($document_key){
+            
+            $package = array(
+                             'apiKey' => $this->api_key,
+                             'documentKey' => $document_key
+                            );
+            
+            $result = $this->client->getLatestImages($package);
+            
+            return $result;
+            
+        }
+        
         /**
          * 
          * Removes a Document from your library
