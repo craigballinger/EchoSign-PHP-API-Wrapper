@@ -30,11 +30,11 @@
         }
         
         function setMergeFields(EchoSignMergeFields $merge_fields){
-            $this->merge_fields = ( !empty($merge_fields) ? $merge_fields : new EchoSignMergeFields );
+            $this->merge_fields = $merge_fields;
         }
         
         function getMergeFields(){
-            return $this->merge_fields;
+            return( !empty($this->merge_fields) ? $this->merge_fields : new EchoSignMergeFields );
         }
         
         protected function getNameFromPath($filepath){

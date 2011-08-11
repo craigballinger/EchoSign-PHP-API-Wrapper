@@ -137,6 +137,25 @@
         
         /*
          * 
+         * Retrieves the current version of a document as raw file contents
+         * @param string $version_key The EchoSign library VersionKey
+         * 
+         */
+        function getDocumentByVersion($version_key){
+            
+            $package = array(
+                             'apiKey' => $this->api_key,
+                             'versionKey' => $version_key
+                            );
+            
+            $result = $this->client->getDocumentByVersion($package);
+            
+            return $result;
+            
+        }
+        
+        /*
+         * 
          * Retrieves a url to access the current version of a document
          * @param string $document_key The EchoSign library DocumentKey
          * 
@@ -248,6 +267,27 @@
                                         );
             
             $result = $this->client->createPersonalEmbeddedWidget($package_data);
+            
+            return $result;
+            
+        }
+        
+        /**
+         * 
+         * Personalize a previously created Embedded Widget
+         * @param string $javascript The Embedded Widget javascript
+         * @param EchosignWidgetPersonalization $personalization The personalization information for the widget
+         * 
+         */          
+        function personalizeEmbeddedWidget($javascript, EchoSignWidgetPersonalization $personalization){
+            
+            $package_data = array_merge(
+                                            array('apiKey' => $this->api_key),
+                                            array('widgetJavascript' => $javascript), 
+                                            $personalization->asArray()
+                                        );
+
+            $result = $this->client->personalizeEmbeddedWidget($package_data);
             
             return $result;
             

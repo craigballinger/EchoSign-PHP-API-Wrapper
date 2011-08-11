@@ -15,6 +15,7 @@
             $creation_info = array(
                                     'fileInfos' =>  $this->document->getFileInfo(),
                                     'name' => $this->document->getDocumentName(),
+                                    'callbackInfo' => $this->getCallbackInfo()
                                  );
             
             

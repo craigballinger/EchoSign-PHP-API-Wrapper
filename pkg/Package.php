@@ -6,11 +6,20 @@
         protected $options;
         protected $type;
         protected $sender_info;
+        protected $callback_info;
         
         function __construct(EchoSignDocument $document, EchoSignOptions $options = null){
             $this->document = $document;
             $this->options = new EchoSignOptions;
         } 
+        
+        function setCallbackInfo($notify_url){
+            $this->callback_info = $notify_url;
+        }
+        
+        function getCallbackInfo(){
+            return $this->callback_info;
+        }
         
         function setSenderInfo(EchoSignSenderInfo $sender_info){
             $this->sender_info = $sender_info;
