@@ -14,7 +14,7 @@
         } 
         
         function setCallbackInfo($notify_url){
-            $this->callback_info = $notify_url;
+            $this->callback_info = array('signedDocumentUrl' => $notify_url);
         }
         
         function getCallbackInfo(){
