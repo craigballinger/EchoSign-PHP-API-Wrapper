@@ -17,12 +17,11 @@
             
             $contents = file_get_contents($this->filepath);
             
-            return array('FileInfo' => array(
+            return array(
                              //'file' => $this->filepath,
                              'file' => $contents,
                              'fileName' => $this->filename
-                            )
-                        );
+                            );
         }
         
         function getDocumentName(){

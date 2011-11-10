@@ -13,8 +13,8 @@
         function BuildCreationInfo(){
             
             $creation_info = array(
-                                    'fileInfos' =>  $this->document->getFileInfo(),
-                                    'name' => $this->document->getDocumentName(),
+                                    'fileInfos' =>  $this->getFileInfos(),
+                                    'name' => $this->name,
                                     'callbackInfo' => $this->getCallbackInfo()
                                  );
             

@@ -10,8 +10,7 @@
         
         function asArray(){
             
-            $fields = array('mergeFields' => $this->fields);
-            return array('mergeFieldInfo' => $fields);
+            return $this->fields;
             
         }
         

@@ -2,14 +2,16 @@
 
     abstract class EchoSignPackage{
         
-        protected $document;
+        protected $name;
+        protected $documents;
         protected $options;
         protected $type;
         protected $sender_info;
         protected $callback_info;
         
         function __construct(EchoSignDocument $document, EchoSignOptions $options = null){
-            $this->document = $document;
+            $this->documents[] = $document;
+            $this->name = $document->getDocumentName();
             $this->options = new EchoSignOptions;
         } 
         
@@ -25,9 +27,43 @@
             $this->sender_info = $sender_info;
         }
         
+        function setName($name){
+            $this->name = $name;
+        }
+        
         function getType(){
             return $this->type;
         }
+        
+        function addDocument(EchosignDocument $document){
+            $this->documents[] = $document;
+        }
+        
+        protected function getFileInfos(){
+            
+            $file_infos = array();
+            
+            foreach($this->documents as $document){
+                $file_infos[] = $document->getFileInfo();
+            }
+            
+            return $file_infos;
+            
+        }
+        
+        protected function getMergeFields(){
+            
+            $merge_fields = array();
+            
+            foreach($this->documents as $document){
+                $merge_fields = array_merge($merge_fields, $document->getMergeFields()->asArray());
+            }
+            
+            $merge_fields = array('mergeFields' => $merge_fields);
+            
+            return array('mergeFieldInfo' => $merge_fields);
+            
+        } 
         
         abstract function buildCreationInfo();
         

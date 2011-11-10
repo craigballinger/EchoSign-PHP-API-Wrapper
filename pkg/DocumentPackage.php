@@ -13,8 +13,8 @@
         function BuildCreationInfo(){
             
             $creation_info = array(
-                                    'fileInfos' =>  $this->document->getFileInfo(),
-                                    'name' => $this->document->getDocumentName(),
+                                    'fileInfos' =>  $this->getFileInfos(),
+                                    'name' => $this->name,
                                     'callbackInfo' => $this->getCallbackInfo()
                                  );
             
@@ -22,9 +22,10 @@
             $creation_info = array_merge(
                                             $creation_info, 
                                             $this->options->asArray(), 
-                                            $this->document->getMergeFields()->asArray(),
+                                            $this->getMergeFields(),
                                             $this->recipients->asArray()
                                         );
+            
             return $creation_info;
             
         }
