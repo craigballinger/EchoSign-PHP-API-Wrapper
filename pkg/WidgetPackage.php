@@ -22,7 +22,7 @@
             $creation_info = array_merge(
                                             $creation_info, 
                                             $this->options->asArray(),
-                                            $this->document->getMergeFields()->asArray(),
+                                            $this->getMergeFields(),
                                             $this->widget->asArray()
                                         );
             
